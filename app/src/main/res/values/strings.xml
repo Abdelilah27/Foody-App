@@ -2,4 +2,17 @@
     <string name="app_name">Foody</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_title_welcome_fragment">Trendy Taste\nTrendy You</string>
+    <string name="main_button_welcome_fragment">Get Started</string>
+    <string name="second_title_welcome_fragment">What\'s your favorite food?</string>
+    <string name="main_title_login_fragment">Welcome Back</string>
+    <string name="email_title_login_fragment">Email</string>
+    <string name="edit_text_email_login_fragment">Your Email Here</string>
+    <string name="pass_title_login_fragment">Password</string>
+    <string name="edit_text_pass_login_fragment">Your Password Here</string>
+    <string name="main_button_login_fragment">Login</string>
+    <string name="login_signup_title_login_fragment">Don\'t Have An Account?</string>
+    <string name="login_signup_login_fragment">Signup</string>
+
+
 </resources>
