@@ -41,7 +41,7 @@
 
             <TextView
                 android:id="@+id/textView"
-                style="@style/main_title_login_fragment"
+                style="@style/main_title_login_registration_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/main_title_login_fragment" />
@@ -60,7 +60,7 @@
 
                 <EditText
                     android:id="@+id/edit_text_email_login_fragment"
-                    style="@style/text_edit_login_fragment"
+                    style="@style/text_edit_login_registration_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/edit_text_email_login_fragment">
@@ -83,7 +83,7 @@
 
                 <EditText
                     android:id="@+id/edit_text_pass_login_fragment"
-                    style="@style/text_edit_login_fragment"
+                    style="@style/text_edit_login_registration_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/edit_text_pass_login_fragment"
@@ -95,7 +95,7 @@
 
             <Button
                 android:id="@+id/main_button_login_fragment"
-                style="@style/main_button_login_fragment"
+                style="@style/main_button_login_registration_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -110,14 +110,14 @@
 
                 <TextView
                     android:id="@+id/textView5"
-                    style="@style/secondary_title_fragment_fragment"
+                    style="@style/secondary_title_login_registration_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/login_signup_title_login_fragment" />
 
                 <TextView
                     android:id="@+id/registration_text_login_fragment"
-                    style="@style/secondary_title_login_fragment"
+                    style="@style/third_title_login_registration_fragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/login_signup_login_fragment" />

@@ -13,6 +13,20 @@
     <string name="main_button_login_fragment">Login</string>
     <string name="login_signup_title_login_fragment">Don\'t Have An Account?</string>
     <string name="login_signup_login_fragment">Signup</string>
+    <string name="main_title_registration_fragment">Let\'s Get Start</string>
+    <string name="name_title_registration_fragment">Name</string>
+    <string name="edit_text_name_registration_fragment">Your Name Here</string>
+    <string name="email_title_registration_fragment">Email</string>
+    <string name="edit_text_email_registration_fragment">Your Email Here</string>
+    <string name="pass_title_registration_fragment">Password</string>
+    <string name="edit_text_pass_registration_fragment">Your Password Here</string>
+    <string name="verification_pass_title_registration_fragment">Verification password</string>
+    <string name="verification_edit_text_pass_registration_fragment">Your Password Here</string>
+    <string name="accept_termes_title_registration_fragment">I accept the terms &amp;
+        condition</string>
+    <string name="main_button_registration_fragment">SignUp</string>
+    <string name="login_title_registration_fragment">Already Have An Account?</string>
+    <string name="login_registration_fragment">Login</string>
 
 
 </resources>
