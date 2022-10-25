@@ -52,4 +52,9 @@
         android:name="com.foody.foody.BottomNavigationFragment"
         android:label="fragment_bottom_navigation"
         tools:layout="@layout/fragment_bottom_navigation" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.foody.foody.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>

@@ -34,5 +34,6 @@
     <string name="filtre_by_category_dashboard_fragment">Short by:</string>
     <string name="sort_by_favorite_fragment">Sort by:</string>
     <string name="title_favorite_fragment">Favorites</string>
+    <string name="ingredient_details_fragment">Ingredient</string>
 
 </resources>
