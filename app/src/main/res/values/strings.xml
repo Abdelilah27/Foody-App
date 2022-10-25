@@ -32,5 +32,7 @@
     <string name="bottom_navigation_item_3">Favorites</string>
     <string name="bottom_navigation_item_4">Setting</string>
     <string name="filtre_by_category_dashboard_fragment">Short by:</string>
+    <string name="sort_by_favorite_fragment">Sort by:</string>
+    <string name="title_favorite_fragment">Favorites</string>
 
 </resources>
