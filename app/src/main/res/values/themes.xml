@@ -81,9 +81,41 @@
     </style>
 
     <style name="third_title_login_registration_fragment">
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/main_color</item>
         <item name="android:layout_marginLeft">2dp</item>
+    </style>
+
+    <style name="second_title_dashboard_fragment">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/secondary_color</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+
+
+    <style name="main_title_dashboard_fragment">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="main_title_foody_dashboard_fragment">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="filtre_title_dashboard_fragment">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="title_item_dashboard_fragment">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:layout_margin">8dp</item>
     </style>
 
 

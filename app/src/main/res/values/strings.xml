@@ -31,6 +31,6 @@
     <string name="bottom_navigation_item_2">List</string>
     <string name="bottom_navigation_item_3">Favorites</string>
     <string name="bottom_navigation_item_4">Setting</string>
-
+    <string name="filtre_by_category_dashboard_fragment">Short by:</string>
 
 </resources>
