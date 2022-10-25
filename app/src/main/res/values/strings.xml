@@ -27,6 +27,10 @@
     <string name="main_button_registration_fragment">SignUp</string>
     <string name="login_title_registration_fragment">Already Have An Account?</string>
     <string name="login_registration_fragment">Login</string>
+    <string name="bottom_navigation_item_1">Dashboard</string>
+    <string name="bottom_navigation_item_2">List</string>
+    <string name="bottom_navigation_item_3">Favorites</string>
+    <string name="bottom_navigation_item_4">Setting</string>
 
 
 </resources>
