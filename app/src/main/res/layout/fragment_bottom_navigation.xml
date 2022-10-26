@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
+    android:background="@drawable/background_welcome_fragment"
     android:layout_height="match_parent"
-    tools:context=".BottomNavigationFragment">
+    tools:context=".ui.bottomNavigation.BottomNavigationFragment">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_frame_layout"

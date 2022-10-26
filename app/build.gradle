@@ -6,6 +6,7 @@ plugins {
 plugins {
     id("kotlin-kapt")
     id "androidx.navigation.safeargs.kotlin"
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -92,6 +93,11 @@ dependencies {
     kapt("androidx.lifecycle:lifecycle-compiler:2.6.0-alpha01")
     // alternately - if using Java8, use the following instead of lifecycle-compiler
     implementation("androidx.lifecycle:lifecycle-common-java8:2.6.0-alpha01")
+
+    // hilt
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+
 }
 
 kapt {

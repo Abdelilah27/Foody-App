@@ -7,7 +7,7 @@
     android:background="@drawable/background_welcome_fragment"
     android:fillViewport="true"
     android:padding="16dp"
-    tools:context=".WelcomeFragment">
+    tools:context=".ui.welcome.WelcomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/drawable_resource_file_background_gradient"
-    tools:context=".SplashScreenFragment">
+    tools:context=".ui.splash.SplashScreenFragment">
 
 
     <TextView
