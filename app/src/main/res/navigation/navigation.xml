@@ -9,7 +9,7 @@
         android:id="@+id/splashScreenFragment"
         android:name="com.foody.foody.ui.splash.SplashScreenFragment"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
+        tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/action_splashScreenFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
@@ -21,7 +21,7 @@
         android:id="@+id/welcomeFragment"
         android:name="com.foody.foody.ui.welcome.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
+        tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -30,7 +30,7 @@
         android:id="@+id/loginFragment"
         android:name="com.foody.foody.ui.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
@@ -42,7 +42,7 @@
         android:id="@+id/registrationFragment"
         android:name="com.foody.foody.ui.registration.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" >
+        tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -54,7 +54,7 @@
         tools:layout="@layout/fragment_bottom_navigation" />
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.foody.foody.DetailsFragment"
+        android:name="com.foody.foody.ui.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
 </navigation>

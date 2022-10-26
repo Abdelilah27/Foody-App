@@ -86,6 +86,7 @@
                     style="@style/text_edit_login_registration_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
                     android:hint="@string/edit_text_email_registration_fragment">
 
                 </EditText>
