@@ -54,15 +54,21 @@
         <item name="android:layout_marginBottom">6dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/roboto_light</item>
-        <item name="android:textColor">@color/secondary_color</item>
+        <item name="android:textColor">@color/main_color</item>
         <item name="android:layout_marginLeft">2dp</item>
     </style>
 
-    <style name="text_edit_login_registration_fragment">
-        <item name="android:padding">12dp</item>
-        <item name="android:textColor">@color/gradient_2</item>
+    <style name="text_edit_login_registration_fragment" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/main_color</item>
+        <item name="singleLine">true</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="errorEnabled">true</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="endIconMode">clear_text</item>
         <item name="android:textColorHint">@color/secondary_color</item>
-        <item name="android:background">@drawable/drawable_resource_border_edit_text</item>
+        <item name="android:textColor">@color/main_color</item>
+        <item name="hintTextColor">@color/secondary_color</item>
+
     </style>
 
     <style name="main_button_login_registration_fragment">
@@ -153,6 +159,11 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/secondary_color</item>
         <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="checkBox_registration_fragment">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
 </resources>

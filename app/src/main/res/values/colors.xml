@@ -13,4 +13,5 @@
     <color name="secondary_color">#666666</color>
     <color name="card_color">#2F7E79</color>
     <color name="star_color">#FFC529</color>
+    <color name="red">#ff0000</color>
 </resources>
