@@ -13,4 +13,8 @@ interface AppDao {
 
     @Delete
     suspend fun delete(user: User)
+
+    @Query("SELECT * FROM USER_TABLE WHERE email=:email")
+    suspend fun findUserByEmail(email: String): List<User>?
+
 }

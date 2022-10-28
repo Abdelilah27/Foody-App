@@ -8,4 +8,8 @@ class RoomRepository @Inject constructor(private val dao: AppDao) {
     suspend fun insert(user: User) {
         dao.insert(user)
     }
+
+    suspend fun findUserByEmail(email: String): List<User>? {
+        return dao.findUserByEmail(email)
+    }
 }

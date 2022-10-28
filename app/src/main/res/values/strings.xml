@@ -22,8 +22,7 @@
     <string name="edit_text_pass_registration_fragment">Your password here</string>
     <string name="verification_pass_title_registration_fragment">Verification password</string>
     <string name="verification_edit_text_pass_registration_fragment">Confirm your password</string>
-    <string
-        name="accept_termes_title_registration_fragment"><![CDATA[I accept the terms & condition]]></string>
+    <string name="accept_termes_title_registration_fragment"><![CDATA[I accept the terms & condition]]></string>
     <string name="main_button_registration_fragment">SignUp</string>
     <string name="login_title_registration_fragment">Already Have An Account?</string>
     <string name="login_registration_fragment">Login</string>
@@ -46,6 +45,7 @@
     <string name="verification_password_error">Please enter confirm password</string>
     <string name="verification_password_not_match_error">Password is not matching</string>
     <string name="checkBox_error">You should accept all the terms</string>
+    <string name="email_exist_error">Email already exist</string>
 
 
 </resources>

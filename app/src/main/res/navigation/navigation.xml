@@ -57,4 +57,9 @@
         android:name="com.foody.foody.ui.details.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="com.foody.foody.ui.progress.ProgressFragment"
+        android:label="fragment_progress"
+        tools:layout="@layout/fragment_progress" />
 </navigation>

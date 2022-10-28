@@ -5,11 +5,16 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.foody.foody.Application
 import com.foody.foody.R
 import com.foody.foody.model.User
 import com.foody.foody.model.UserError
 import com.foody.foody.repository.RoomRepository
+import com.foody.foody.utils.BinderUtil.toSHA256Hash
+import com.foody.foody.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -23,6 +28,9 @@ class RegistrationViewModel @Inject constructor(private val repository: RoomRepo
     val liveErrorUser: LiveData<UserError> = _liveUserError
 
     val isChecked = ObservableField<Boolean>(false)
+
+    // Registration updates
+    val liveRegistrationFlow = MutableLiveData<Resource.Status>(Resource.Status.NONE)
 
     fun onRegistrationClicked(confirmPassword: String): Boolean {
         var isValid = true
@@ -66,10 +74,20 @@ class RegistrationViewModel @Inject constructor(private val repository: RoomRepo
             isValid = false
         }
 
-
-
-
-        if (!isValid) {
+        if (isValid) {
+            viewModelScope.launch {
+                val listUser = repository.findUserByEmail(liveUser.value!!.email)
+                if (listUser?.isNotEmpty() == true) {
+                    _liveUserError.postValue(UserError(emailError = R.string.email_exist_error))
+                } else if (listUser?.isEmpty() == true) {
+                    liveRegistrationFlow.postValue(Resource.Status.LOADING)
+                    val userInfo =
+                        liveUser.value!!.copy(password = liveUser.value!!.password.toSHA256Hash())
+                    repository.insert(userInfo)
+                    Application.currUser = userInfo
+                    liveRegistrationFlow.postValue(Resource.Status.SUCCESS)
+                }
+            }
         }
 
 

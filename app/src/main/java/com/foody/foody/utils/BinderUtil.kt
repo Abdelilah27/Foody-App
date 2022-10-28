@@ -4,6 +4,7 @@ import android.widget.CheckBox
 import androidx.databinding.BindingAdapter
 import com.foody.foody.R
 import com.google.android.material.textfield.TextInputLayout
+import java.security.MessageDigest
 
 object BinderUtil {
     @JvmStatic
@@ -26,5 +27,12 @@ object BinderUtil {
             checkBox.error = checkBox.context.getString(error!!)
             checkBox.requestFocus()
         }
+    }
+
+    fun String.toSHA256Hash(): String {
+        val bytes = this.toString().toByteArray()
+        val md = MessageDigest.getInstance("SHA-256")
+        val digest = md.digest(bytes)
+        return digest.fold("") { str, it -> str + "%02x".format(it) }
     }
 }
