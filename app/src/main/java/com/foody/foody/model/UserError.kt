@@ -21,6 +21,6 @@ data class UserError(
     var emailError: Int = R.string.empty,
     var passwordError: Int = R.string.empty,
     var confirmPasswordError: Int = R.string.empty,
-    var checkBoxError: Boolean = false
+    var checkBoxError: Int = R.string.empty,
 ) {
 }

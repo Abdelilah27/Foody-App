@@ -179,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:checked="@={registrationViewModel.isChecked}"
                     android:text="@string/accept_termes_title_registration_fragment"
-                    />
+                    app:errorText="@{registrationViewModel.liveErrorUser.checkBoxError}" />
 
                 <Button
                     android:id="@+id/main_button_registration_fragment"

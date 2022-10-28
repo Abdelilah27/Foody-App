@@ -1,8 +1,6 @@
 package com.foody.foody.ui.registration
 
-import android.util.Log
 import android.util.Patterns
-import androidx.databinding.BindingAdapter
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +9,6 @@ import com.foody.foody.R
 import com.foody.foody.model.User
 import com.foody.foody.model.UserError
 import com.foody.foody.repository.RoomRepository
-import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -28,7 +25,6 @@ class RegistrationViewModel @Inject constructor(private val repository: RoomRepo
     val isChecked = ObservableField<Boolean>(false)
 
     fun onRegistrationClicked(confirmPassword: String): Boolean {
-        Log.d("TAG", "is checked: ${isChecked.get()}")
         var isValid = true
         if (liveUser.value?.name.isNullOrEmpty()) {
             _liveUserError.postValue(UserError(nameError = R.string.name_error))
@@ -66,7 +62,7 @@ class RegistrationViewModel @Inject constructor(private val repository: RoomRepo
         }
 
         if (isValid && isChecked.get() == false) {
-            _liveUserError.postValue(UserError(checkBoxError = false))
+            _liveUserError.postValue(UserError(checkBoxError = R.string.checkBox_error))
             isValid = false
         }
 
@@ -90,10 +86,5 @@ class RegistrationViewModel @Inject constructor(private val repository: RoomRepo
         return password.length > 5
     }
 
-
-    @BindingAdapter("app:errorText")
-    fun setErrorMessage(view: TextInputLayout, errorMessage: Int) {
-        view.error = errorMessage.toString()
-    }
 }
 
