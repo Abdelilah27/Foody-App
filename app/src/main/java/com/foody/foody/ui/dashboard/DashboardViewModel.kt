@@ -15,13 +15,13 @@ import javax.inject.Inject
 @HiltViewModel
 class DashboardViewModel @Inject constructor(private val retrofitServiceRepository: RetrofitServiceRepository) :
     ViewModel() {
-    private val categoriesLiveData = MutableLiveData<Response<ListCategory>>()
-    val categories: LiveData<Response<ListCategory>> = categoriesLiveData
+    private val _categories = MutableLiveData<Response<ListCategory>>()
+    val categories: LiveData<Response<ListCategory>> = _categories
 
     init {
         viewModelScope.launch {
             val categories = retrofitServiceRepository.getCategoriesFromAPI()
-            categoriesLiveData.postValue(categories)
+            _categories.postValue(categories)
         }
     }
 

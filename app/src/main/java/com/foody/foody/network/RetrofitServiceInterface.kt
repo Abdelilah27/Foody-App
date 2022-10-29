@@ -11,6 +11,6 @@ interface RetrofitServiceInterface {
     suspend fun getCategoriesFromAPI(): Response<ListCategory>
 
 
-    @GET("api/json/v1/1/filter.php?c={category}")
+    @GET("filter.php?c={category}")
     suspend fun getDataByCategoryFromAPI(@Path("category") category: String): Response<Meal>
 }
