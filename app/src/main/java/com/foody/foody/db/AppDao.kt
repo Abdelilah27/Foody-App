@@ -17,4 +17,8 @@ interface AppDao {
     @Query("SELECT * FROM USER_TABLE WHERE email=:email")
     suspend fun findUserByEmail(email: String): List<User>?
 
+    @Query("SELECT * FROM USER_TABLE WHERE email=:email and password=:password")
+    suspend fun findUserByEmailAndPass(email: String, password: String): List<User>?
+
+
 }

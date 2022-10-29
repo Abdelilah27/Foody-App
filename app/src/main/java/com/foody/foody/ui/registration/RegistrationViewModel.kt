@@ -1,17 +1,16 @@
 package com.foody.foody.ui.registration
 
-import android.util.Patterns
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.foody.foody.Application
 import com.foody.foody.R
 import com.foody.foody.model.User
 import com.foody.foody.model.UserError
 import com.foody.foody.repository.RoomRepository
 import com.foody.foody.utils.BinderUtil.toSHA256Hash
+import com.foody.foody.utils.FunUtil
 import com.foody.foody.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -42,7 +41,7 @@ class RegistrationViewModel @Inject constructor(private val repository: RoomRepo
             _liveUserError.postValue(UserError(emailError = R.string.email_error))
             isValid = false
         }
-        if (isValid && !isEmailValid(liveUser.value?.email!!)) {
+        if (isValid && !FunUtil.isEmailValid(liveUser.value?.email!!)) {
             _liveUserError.postValue(UserError(emailError = R.string.email_error))
             isValid = false
         }
@@ -84,7 +83,6 @@ class RegistrationViewModel @Inject constructor(private val repository: RoomRepo
                     val userInfo =
                         liveUser.value!!.copy(password = liveUser.value!!.password.toSHA256Hash())
                     repository.insert(userInfo)
-                    Application.currUser = userInfo
                     liveRegistrationFlow.postValue(Resource.Status.SUCCESS)
                 }
             }
@@ -93,10 +91,6 @@ class RegistrationViewModel @Inject constructor(private val repository: RoomRepo
 
 
         return isValid
-    }
-
-    private fun isEmailValid(email: String): Boolean {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
 

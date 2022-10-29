@@ -46,6 +46,7 @@
     <string name="verification_password_not_match_error">Password is not matching</string>
     <string name="checkBox_error">You should accept all the terms</string>
     <string name="email_exist_error">Email already exist</string>
+    <string name="user_mail_pass_error">Invalid username or password</string>
 
 
 </resources>

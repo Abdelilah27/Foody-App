@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.foody.foody.DashboardFragment"
+        android:name="com.foody.foody.ui.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.foody.foody.FavoritesFragment"
+        android:name="com.foody.foody.ui.favorites.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
 </navigation>

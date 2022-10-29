@@ -12,4 +12,8 @@ class RoomRepository @Inject constructor(private val dao: AppDao) {
     suspend fun findUserByEmail(email: String): List<User>? {
         return dao.findUserByEmail(email)
     }
+
+    suspend fun findUserByEmailAndPass(email: String, password: String): List<User>? {
+        return dao.findUserByEmailAndPass(email, password)
+    }
 }
