@@ -12,11 +12,13 @@ import android.widget.SpinnerAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.foody.foody.R
 import com.foody.foody.adapters.DashboardMealAdapter
 import com.foody.foody.databinding.FragmentDashboardBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -35,15 +37,13 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         savedInstanceState: Bundle?
     ): View? {
         val dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false)
-        dashboardBinding.dashboardViewModel = viewModel
-        dashboardBinding.lifecycleOwner = this
         initUI(dashboardBinding)
         return dashboardBinding.root
     }
 
     private fun initUI(dashboardBinding: FragmentDashboardBinding) {
         viewModel.categories.observe(viewLifecycleOwner, Observer { item ->
-            // fil the spinner with the categories data
+            // Fill the spinner with the categories data
             val listCategoriesName: ArrayList<String> = ArrayList()
             item.body()!!.categories.forEach {
                 listCategoriesName.add(it.strCategory)
@@ -63,7 +63,10 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                 onItemSelectedListener = object :
                     AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                        Log.d("TAG2", p2.toString())
+                        // Notify adapter and change data by categories
+                        lifecycleScope.launch {
+                            getDataByCategory(listCategoriesName[p2])
+                        }
                     }
 
                     override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -74,6 +77,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
             }
         })
 
+        // Setup our recycler
         dashboardBinding.recyclerDashboardFragment.apply {
             mealAdapter = DashboardMealAdapter(context)
             adapter = mealAdapter
@@ -82,10 +86,18 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         }
 
         viewModel.meals.observe(viewLifecycleOwner, Observer { item ->
-            Log.d("TAG", item.body()?.meals.toString())
-            mealAdapter.submitList(item.body()?.meals)
+            try {
+                mealAdapter.setData(item.body()?.meals!!)
+            } catch (e: Exception) {
+                Log.d("Execption", e.toString())
+            }
         })
 
     }
+
+    private suspend fun getDataByCategory(category: String) {
+        viewModel.getDataByCategory(category)
+    }
+
 
 }

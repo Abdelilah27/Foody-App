@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.foody.foody.R
 import com.foody.foody.databinding.FragmentLoginBinding
+import com.foody.foody.utils.BinderUtil.hideKeyboard
 import com.foody.foody.utils.PIBaseActivity
 import com.foody.foody.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,6 +60,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 LoginFragmentDirections.actionLoginFragmentToRegistrationFragment()
             findNavController().navigate(action)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.liveLoginFlow.removeObservers(viewLifecycleOwner)
+        view?.hideKeyboard()
     }
 
 }

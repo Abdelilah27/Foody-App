@@ -1,64 +1,48 @@
 package com.foody.foody.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.foody.foody.databinding.ItemRecyclerDashboardFragmentBinding
+import com.foody.foody.R
 import com.foody.foody.model.Meal
 
 class DashboardMealAdapter(val context: Context) :
-    ListAdapter<Meal, DashboardMealAdapter.DashboardMealViewHolder>
-        (DifCallback()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardMealViewHolder {
+    RecyclerView.Adapter<DashboardMealAdapter.ItemViewHolder>() {
+    private var myList: List<Meal> = listOf()
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(data: List<Meal>) {
+        myList = data
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val binding =
-            ItemRecyclerDashboardFragmentBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        return DashboardMealViewHolder(binding)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_recycler_dashboard_fragment, parent, false)
+        return ItemViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: DashboardMealViewHolder, position: Int) {
-        val currentItem = getItem(position)
-        holder.bind(currentItem)
-    }
-
-    inner class DashboardMealViewHolder(private val binding: ItemRecyclerDashboardFragmentBinding) :
-        RecyclerView.ViewHolder(binding.root), View.OnClickListener {
-        init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(p0: View?) {
-            val position: Int = adapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-//                listener.onItemClick(position)
-            }
-        }
-
-
-        fun bind(meal: Meal) {
-            binding.apply {
-                idItemRecyclerDashboardFragment.text = meal.idMeal
-                titleItemRecyclerDashboardFragment.text = meal.strMeal
-                Glide.with(imageItemRecyclerDashboardFragment)
-                    .load(meal.strMealThumb)
-                    .into(imageItemRecyclerDashboardFragment)
-            }
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        myList[position].let {
+            holder.id.text = it.idMeal
+            holder.title.text = it.strMeal
+            Glide.with(context).load(myList.get(position).strMealThumb).into(holder.image)
         }
     }
 
-    class DifCallback : DiffUtil.ItemCallback<Meal>() {
-        override fun areItemsTheSame(oldItem: Meal, newItem: Meal) =
-            oldItem.idMeal == newItem.idMeal
 
-        override fun areContentsTheSame(oldItem: Meal, newItem: Meal) = oldItem == newItem
-
+    inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var id: TextView = view.findViewById(R.id.id_item_recycler_dashboard_fragment)
+        var title: TextView = view.findViewById(R.id.title_item_recycler_dashboard_fragment)
+        var image: ImageView = view.findViewById(R.id.image_item_recycler_dashboard_fragment)
     }
+
+    override fun getItemCount() = myList.size
 }

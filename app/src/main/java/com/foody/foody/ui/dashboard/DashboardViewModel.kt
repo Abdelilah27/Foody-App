@@ -8,6 +8,7 @@ import com.foody.foody.model.ListCategory
 import com.foody.foody.model.ListMeal
 import com.foody.foody.repository.RetrofitServiceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
@@ -24,8 +25,17 @@ class DashboardViewModel @Inject constructor(private val retrofitServiceReposito
 
     init {
         viewModelScope.launch {
-            getCategories()
-            getDataByCategory("Beef")
+            val child = launch { getCategories() }
+            child.join()
+            delay(500)
+            launch {
+                if (child.isCompleted) {
+                    getDataByCategory(
+                        categories.value?.body()?.categories?.first()
+                            ?.strCategory.toString()
+                    )
+                }
+            }
         }
     }
 
@@ -34,7 +44,7 @@ class DashboardViewModel @Inject constructor(private val retrofitServiceReposito
         _categories.postValue(categories)
     }
 
-    private suspend fun getDataByCategory(category: String) {
+    suspend fun getDataByCategory(category: String) {
         val meals = retrofitServiceRepository.getDataByCategoryFromAPI(category)
         _meals.postValue(meals)
     }

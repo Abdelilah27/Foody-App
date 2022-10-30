@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.foody.foody.R
 import com.foody.foody.databinding.FragmentRegistrationBinding
+import com.foody.foody.utils.BinderUtil.hideKeyboard
 import com.foody.foody.utils.PIBaseActivity
 import com.foody.foody.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -71,5 +72,11 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             findNavController().navigate(action)
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.liveRegistrationFlow.removeObservers(viewLifecycleOwner)
+        view?.hideKeyboard()
     }
 }
