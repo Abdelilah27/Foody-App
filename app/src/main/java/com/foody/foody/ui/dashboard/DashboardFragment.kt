@@ -1,5 +1,6 @@
 package com.foody.foody.ui.dashboard
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -22,9 +23,12 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
+class DashboardFragment() :
+    Fragment(R.layout.fragment_dashboard) {
     private val viewModel: DashboardViewModel by viewModels()
     private lateinit var mealAdapter: DashboardMealAdapter
+    private var category = ""
+    private var elementNumber = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +45,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         return dashboardBinding.root
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initUI(dashboardBinding: FragmentDashboardBinding) {
         viewModel.categories.observe(viewLifecycleOwner, Observer { item ->
             // Fill the spinner with the categories data
@@ -57,16 +62,23 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
             } as SpinnerAdapter
             with(dashboardBinding.spinnerDashboardFragment)
             {
+                // get category name
+                category = listCategoriesName.first()
                 adapter = adapters
                 setSelection(0, false)
                 gravity = Gravity.CENTER
                 onItemSelectedListener = object :
                     AdapterView.OnItemSelectedListener {
-                    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    override fun onItemSelected(
+                        p0: AdapterView<*>?, p1: View?, p2: Int, p3:
+                        Long
+                    ) {
                         // Notify adapter and change data by categories
+                        category = listCategoriesName[p2]
                         lifecycleScope.launch {
-                            getDataByCategory(listCategoriesName[p2])
+                            getDataByCategory(listCategoriesName[p2]) //TODO
                         }
+
                     }
 
                     override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -88,8 +100,13 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         viewModel.meals.observe(viewLifecycleOwner, Observer { item ->
             try {
                 mealAdapter.setData(item.body()?.meals!!)
+                elementNumber = mealAdapter.itemCount
+                // set number of item and category name //TODO
+                dashboardBinding.typesTextDashboardFragment.text =
+                    "$elementNumber elements of $category"
+                dashboardBinding.categoryTitleTextDashboardFragment.text = category
             } catch (e: Exception) {
-                Log.d("Execption", e.toString())
+                Log.d("Exception", e.toString())
             }
         })
 
@@ -99,5 +116,11 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         viewModel.getDataByCategory(category)
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.categories.removeObservers(viewLifecycleOwner)
+        viewModel.meals.removeObservers(viewLifecycleOwner)
+    }
 
 }
