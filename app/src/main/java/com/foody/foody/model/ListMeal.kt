@@ -1,5 +1,5 @@
 package com.foody.foody.model
 
-data class ListFood(
+data class ListMeal(
     val meals: List<Meal>
 )
