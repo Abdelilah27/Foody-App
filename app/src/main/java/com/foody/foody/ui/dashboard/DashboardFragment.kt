@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SpinnerAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -18,6 +19,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.foody.foody.R
 import com.foody.foody.adapters.DashboardMealAdapter
 import com.foody.foody.databinding.FragmentDashboardBinding
+import com.foody.foody.utils.NetworkResult
+import com.foody.foody.utils.PIBaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -47,6 +50,40 @@ class DashboardFragment() :
 
     @SuppressLint("SetTextI18n")
     private fun initUI(dashboardBinding: FragmentDashboardBinding) {
+        // Error Handling getCategories
+        viewModel.liveCategoriesFlow.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is NetworkResult.Success -> {
+                    (activity as PIBaseActivity).dismissProgressDialog("Category")
+                }
+                is NetworkResult.Error -> {
+                    (activity as PIBaseActivity).dismissProgressDialog("Category")
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                }
+                is NetworkResult.Loading -> {
+                    (activity as PIBaseActivity).showProgressDialog("Category")
+                }
+            }
+        })
+
+        // Error Handling get Data by category
+        viewModel.liveDataFlow.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is NetworkResult.Success -> {
+                    (activity as PIBaseActivity).dismissProgressDialog("Data")
+                }
+                is NetworkResult.Error -> {
+                    (activity as PIBaseActivity).dismissProgressDialog("Data")
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                }
+                is NetworkResult.Loading -> {
+                    (activity as PIBaseActivity).showProgressDialog("Data")
+                }
+            }
+        })
+
+
+
         viewModel.categories.observe(viewLifecycleOwner, Observer { item ->
             // Fill the spinner with the categories data
             val listCategoriesName: ArrayList<String> = ArrayList()

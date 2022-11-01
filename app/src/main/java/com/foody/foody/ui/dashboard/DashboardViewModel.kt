@@ -1,6 +1,5 @@
 package com.foody.foody.ui.dashboard
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.foody.foody.model.ListCategory
 import com.foody.foody.model.ListMeal
 import com.foody.foody.repository.RetrofitServiceRepository
+import com.foody.foody.utils.NetworkResult
 import com.foody.foody.utils.OnItemSelectedInterface
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -25,6 +25,11 @@ class DashboardViewModel @Inject constructor(private val retrofitServiceReposito
     private val _meals = MutableLiveData<Response<ListMeal>>()
     val meals: LiveData<Response<ListMeal>> = _meals
 
+    val liveCategoriesFlow: LiveData<NetworkResult<ListCategory>>
+        get() = retrofitServiceRepository.apiResponseCategoriesLiveData
+
+    val liveDataFlow: LiveData<NetworkResult<ListMeal>>
+        get() = retrofitServiceRepository.apiResponseDataLiveData
 
     init {
         viewModelScope.launch {
@@ -53,7 +58,6 @@ class DashboardViewModel @Inject constructor(private val retrofitServiceReposito
     }
 
     override suspend fun onItemClick(position: Int) {
-        Log.d("TAGTAGTAG", "onItemClick: $position")
         getDataByCategory(this._categories.value?.body()?.categories?.get(position).toString())
     }
 
