@@ -82,8 +82,6 @@ class DashboardFragment() :
             }
         })
 
-
-
         viewModel.categories.observe(viewLifecycleOwner, Observer { item ->
             // Fill the spinner with the categories data
             val listCategoriesName: ArrayList<String> = ArrayList()
@@ -157,7 +155,9 @@ class DashboardFragment() :
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.categories.removeObservers(viewLifecycleOwner)
+        viewModel.liveDataFlow.removeObservers(viewLifecycleOwner)
         viewModel.meals.removeObservers(viewLifecycleOwner)
+        viewModel.liveCategoriesFlow.removeObservers(viewLifecycleOwner)
     }
 
 }
