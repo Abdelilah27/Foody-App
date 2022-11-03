@@ -155,9 +155,9 @@ class DashboardFragment() :
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.categories.removeObservers(viewLifecycleOwner)
-        viewModel.liveDataFlow.removeObservers(viewLifecycleOwner)
         viewModel.meals.removeObservers(viewLifecycleOwner)
         viewModel.liveCategoriesFlow.removeObservers(viewLifecycleOwner)
+        viewModel.liveDataFlow.removeObservers(viewLifecycleOwner)
     }
 
 }

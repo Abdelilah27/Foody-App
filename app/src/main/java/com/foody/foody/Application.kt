@@ -6,7 +6,4 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class Application : Application() {
-    companion object {
-        var currUser: User? = null
-    }
 }

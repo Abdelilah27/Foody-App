@@ -1,18 +1,14 @@
-package com.foody.foody.ui.mainActivity
+package com.foody.foody
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.foody.foody.R
 import com.foody.foody.utils.PIBaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : PIBaseActivity() {
-    private val viewModel: MainActivityViewModel by viewModels()
-
     companion object {
         @SuppressLint("StaticFieldLeak")
         lateinit var navController: NavController
