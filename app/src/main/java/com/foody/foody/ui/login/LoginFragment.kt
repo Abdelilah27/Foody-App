@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.foody.foody.R
 import com.foody.foody.databinding.FragmentLoginBinding
-import com.foody.foody.utils.BinderUtil.hideKeyboard
+import com.foody.foody.utils.FunUtil.hideKeyboard
 import com.foody.foody.utils.PIBaseActivity
 import com.foody.foody.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint

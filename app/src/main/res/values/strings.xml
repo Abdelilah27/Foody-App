@@ -35,6 +35,15 @@
     <string name="title_favorite_fragment">Favorites</string>
     <string name="ingredient_details_fragment">Ingredient</string>
     <string name="empty"> </string>
+    <string name="empty_text">empty</string>
+    <string name="main_title_account_fragment">Account info</string>
+    <string name="main_button_account_fragment">Logout</string>
+    <string name="name_title_account_fragment">Name</string>
+    <string name="email_title_account_fragment">Email</string>
+
+
+
+
 
 
     <!-- Error message -->

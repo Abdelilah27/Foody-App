@@ -8,8 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.foody.foody.R
 import com.foody.foody.model.User
 import com.foody.foody.repository.RoomRepository
-import com.foody.foody.utils.BinderUtil.toSHA256Hash
 import com.foody.foody.utils.FunUtil
+import com.foody.foody.utils.FunUtil.toSHA256Hash
 import com.foody.foody.utils.Resource
 import com.foody.foody.utils.SessionManagement
 import dagger.hilt.android.lifecycle.HiltViewModel
