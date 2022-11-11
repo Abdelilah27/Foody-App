@@ -30,8 +30,10 @@ class DashboardFragment() :
     Fragment(R.layout.fragment_dashboard) {
     private val viewModel: DashboardViewModel by viewModels()
     private lateinit var mealAdapter: DashboardMealAdapter
+    private lateinit var dashboardBinding: FragmentDashboardBinding
     private var category = ""
     private var elementNumber = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +45,17 @@ class DashboardFragment() :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false)
+        dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false)
         initUI(dashboardBinding)
         return dashboardBinding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        dashboardBinding.spinnerDashboardFragment.setSelection(
+            viewModel.preferenceManger
+                .getSelection()
+        )
     }
 
     @SuppressLint("SetTextI18n")
@@ -108,12 +118,12 @@ class DashboardFragment() :
                         p0: AdapterView<*>?, p1: View?, p2: Int, p3:
                         Long
                     ) {
+                        viewModel.preferenceManger.setSelection(p2) // Save Selected Spinner Position
                         // Notify adapter and change data by categories
                         category = listCategoriesName[p2]
                         lifecycleScope.launch {
                             getDataByCategory(listCategoriesName[p2]) //TODO
                         }
-
                     }
 
                     override fun onNothingSelected(p0: AdapterView<*>?) {

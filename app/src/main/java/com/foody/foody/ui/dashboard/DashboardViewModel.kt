@@ -11,6 +11,7 @@ import com.foody.foody.repository.RetrofitServiceRepository
 import com.foody.foody.utils.FunUtil.hasInternetConnection
 import com.foody.foody.utils.NetworkResult
 import com.foody.foody.utils.OnItemSelectedInterface
+import com.foody.foody.utils.PreferenceManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
@@ -36,16 +37,17 @@ class DashboardViewModel @Inject constructor(
     val liveCategoriesFlow: MutableLiveData<NetworkResult<ListCategory>> = MutableLiveData()
     val liveDataFlow: MutableLiveData<NetworkResult<ListMeal>> = MutableLiveData()
 
+    //  To Save Selected Spinner Position
+    val preferenceManger: PreferenceManager by lazy {
+        PreferenceManager(context)
+    }
+
     init {
         // Init live flow
         viewModelScope.launch {
             // Get categories for the spinner
             getCategories()
-            // Get data for the recycler
-            getDataByCategory(
-                _categories.value?.body()?.categories?.first()
-                    ?.strCategory.toString()
-            )
+            getDataByCategory(_categories.value?.body()?.categories?.first()?.strCategory.toString())
         }
 
     }
