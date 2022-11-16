@@ -20,14 +20,16 @@ import com.foody.foody.R
 import com.foody.foody.adapters.DashboardMealAdapter
 import com.foody.foody.databinding.FragmentDashboardBinding
 import com.foody.foody.utils.NetworkResult
+import com.foody.foody.utils.OnItemSelectedInterface
 import com.foody.foody.utils.PIBaseActivity
+import com.foody.foody.utils.onItemSelectedAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class DashboardFragment() :
-    Fragment(R.layout.fragment_dashboard) {
+    Fragment(R.layout.fragment_dashboard), onItemSelectedAdapter {
     private val viewModel: DashboardViewModel by viewModels()
     private lateinit var mealAdapter: DashboardMealAdapter
     private lateinit var dashboardBinding: FragmentDashboardBinding
@@ -136,7 +138,7 @@ class DashboardFragment() :
 
         // Setup our recycler
         dashboardBinding.recyclerDashboardFragment.apply {
-            mealAdapter = DashboardMealAdapter(context)
+            mealAdapter = DashboardMealAdapter(context, this@DashboardFragment)
             adapter = mealAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
             setHasFixedSize(true)
@@ -169,5 +171,10 @@ class DashboardFragment() :
         viewModel.liveCategoriesFlow.removeObservers(viewLifecycleOwner)
         viewModel.liveDataFlow.removeObservers(viewLifecycleOwner)
     }
+
+    override fun onItemClick(position: Int) {
+        //TODO
+    }
+
 
 }
