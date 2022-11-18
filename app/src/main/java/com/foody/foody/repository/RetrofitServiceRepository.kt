@@ -2,6 +2,7 @@ package com.foody.foody.repository
 
 import com.foody.foody.model.ListCategory
 import com.foody.foody.model.ListMeal
+import com.foody.foody.model.MealDetails
 import com.foody.foody.network.RetrofitServiceInterface
 import retrofit2.Response
 import javax.inject.Inject
@@ -14,6 +15,10 @@ class RetrofitServiceRepository @Inject constructor(private val retrofitServiceI
 
     suspend fun getDataByCategoryFromAPI(category: String): Response<ListMeal> {
         return retrofitServiceInterface.getDataByCategoryFromAPI(category)
+    }
+
+    suspend fun getDetailsById(id: String): Response<MealDetails> {
+        return retrofitServiceInterface.getDetailsById(id)
     }
 
 

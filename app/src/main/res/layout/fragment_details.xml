@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_welcome_fragment"
-    tools:context=".DetailsFragment">
+    tools:context=".ui.details.DetailsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             app:cardCornerRadius="25dp">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/back"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
@@ -51,8 +51,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_toStartOf="@+id/card_view_favorite"
                 android:ellipsize="end"
-                android:maxLines="1"
-                android:text="TextView" />
+                android:maxLines="1" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view_favorite"
@@ -85,29 +84,28 @@
                 android:src="@drawable/ic_baseline_star_24" />
 
             <TextView
+                android:id="@+id/category_title_details_fragment"
                 style="@style/category_title_details_fragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="4dp"
-                android:text="SeaFoosssd" />
+                android:layout_marginStart="4dp" />
 
             <TextView
+                android:id="@+id/country_title_details_fragment"
                 style="@style/country_title_details_fragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:text="Turkish"
-                android:textStyle="italic" />
+                android:layout_marginStart="8dp" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/instructions_details_fragment"
             style="@style/instructions_details_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="SeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssd" />
+            android:layout_marginTop="8dp" />
 
         <TextView
             style="@style/ingredient_details_fragment"
@@ -117,11 +115,11 @@
             android:text="@string/ingredient_details_fragment" />
 
         <TextView
+            android:id="@+id/ingredient_details_fragment"
             style="@style/instructions_details_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="SeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssdSeaFoosssd" />
+            android:layout_marginTop="8dp" />
 
 
     </LinearLayout>

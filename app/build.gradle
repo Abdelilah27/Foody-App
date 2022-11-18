@@ -113,6 +113,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
     implementation 'com.google.code.gson:gson:2.10'
 
+    // Iterate over class components
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+
 
 }
 

@@ -16,11 +16,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.foody.foody.MainActivity
 import com.foody.foody.R
 import com.foody.foody.adapters.DashboardMealAdapter
 import com.foody.foody.databinding.FragmentDashboardBinding
+import com.foody.foody.ui.bottomNavigation.BottomNavigationFragmentDirections
 import com.foody.foody.utils.NetworkResult
-import com.foody.foody.utils.OnItemSelectedInterface
 import com.foody.foody.utils.PIBaseActivity
 import com.foody.foody.utils.onItemSelectedAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,9 +31,12 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class DashboardFragment() :
     Fragment(R.layout.fragment_dashboard), onItemSelectedAdapter {
+    private val TAG = "DashboardFragment"
     private val viewModel: DashboardViewModel by viewModels()
     private lateinit var mealAdapter: DashboardMealAdapter
     private lateinit var dashboardBinding: FragmentDashboardBinding
+
+    // to stock the category, number of elements name
     private var category = ""
     private var elementNumber = 0
 
@@ -124,7 +128,7 @@ class DashboardFragment() :
                         // Notify adapter and change data by categories
                         category = listCategoriesName[p2]
                         lifecycleScope.launch {
-                            getDataByCategory(listCategoriesName[p2]) //TODO
+                            viewModel.getDataByCategory(listCategoriesName[p2]) //TODO
                         }
                     }
 
@@ -159,10 +163,6 @@ class DashboardFragment() :
 
     }
 
-    private suspend fun getDataByCategory(category: String) {
-        viewModel.getDataByCategory(category)
-    }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -173,7 +173,10 @@ class DashboardFragment() :
     }
 
     override fun onItemClick(position: Int) {
-        //TODO
+        val args = position.toString() + TAG
+        val action =
+            BottomNavigationFragmentDirections.actionBottomNavigationFragmentToDetailsFragment(args)
+        MainActivity.navController.navigate(action)
     }
 
 
