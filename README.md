@@ -37,6 +37,15 @@ Foody App is an Android application that helps you discover and explore various 
 * [Navigation](https://developer.android.com/guide/navigation/navigation-getting-started) - A library for navigating between destinations within an app.
 * [NavArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) - A plugin that generates code to help you safely pass data between destinations.
 
+## Modules
+
+The app has been divided into the following modules:
+
+* **auth** - This module handles the authentication functionality of the app.
+* **networking** - This module is responsible for handling the network operations, such as communicating with the API and parsing the response.
+* **user** - This module manages the user's profile and settings.
+* **navigation** - This module handles the navigation flow between different screens of the app.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request.
